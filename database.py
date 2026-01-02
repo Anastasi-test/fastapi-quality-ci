@@ -1,5 +1,5 @@
 from sqlalchemy.ext.asyncio import AsyncSession, create_async_engine
-from sqlalchemy.orm import sessionmaker, declarative_base
+from sqlalchemy.orm import declarative_base, sessionmaker
 
 DATABASE_URL = "sqlite+aiosqlite:///./recipes.db"
 
@@ -18,8 +18,8 @@ Base = declarative_base()
 
 
 async def get_session() -> AsyncSession:
-    """
-    Dependency для получения асинхронной сессии БД.
+    """Dependency для получения асинхронной сессии БД.
+
     Создаётся новая сессия на каждый запрос.
     """
     async with AsyncSessionLocal() as session:
